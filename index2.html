@@ -26,6 +26,7 @@
             padding: 0;
             background-color: var(--background-color);
             color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
         }
         .glass-header {
             position: sticky;
@@ -89,6 +90,14 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .period-table th, .period-table td {
+                padding: 5px;
+                font-size: 0.8em;
+            }
+            .assignment-card {
+                min-width: 100%;
+                max-width: 100%;
+            }
         }
         .theme-toggle {
             padding: 10px;
@@ -120,8 +129,6 @@
             <span class="tagline"><h1 style="font-size:1vw">"For freshmen, by freshmen"</h1></span>
         </div>
         <div id="nav-container">
-
-
             <style>
             /* Base styles */
             .nav {
@@ -186,26 +193,19 @@
                 display: block;
             }
             </style>
-            
-            
-            
             <nav class="nav">
-                
                 <div class="nav-links">
-                    
+                    <!-- Add your nav links here -->
                 </div>
+                <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
             </nav>
-            
             <script>
             function toggleMenu() {
                 const navLinks = document.querySelector('.nav-links');
                 navLinks.classList.toggle('active');
             }
             </script>
-            
-            
-            
-            </div>
+        </div>
     </header>
 
     <main class="fade-in">
