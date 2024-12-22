@@ -1136,7 +1136,7 @@ body.light-mode {
 }
 
 body.light-mode .assignment-card {
-    background: var(--background-light);
+    background: #f0f0f0; /* Slightly darker background for assignment card */
     border: 1px solid var(--border-color);
     color: var(--text-dark);
 }
@@ -1146,12 +1146,12 @@ body.light-mode .assignment-details {
 }
 
 body.light-mode .glass-header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8); /* Slightly darker background for navbar */
     border-bottom: 1px solid var(--border-color);
 }
 
 body.light-mode nav {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(240, 240, 240, 0.9); /* Slightly darker background for navbar */
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -1165,6 +1165,7 @@ body.light-mode .dropbtn {
 body.light-mode .dropdown-content {
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 body.light-mode .dropdown-content a {
@@ -1173,6 +1174,10 @@ body.light-mode .dropdown-content a {
 
 body.light-mode .dropdown-content a:hover {
     background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .tagline {
+    color: var(--text-dark); /* Dark color for tagline in light mode */
 }
 
 /* Dark Mode */
@@ -1211,6 +1216,7 @@ body.dark-mode .dropbtn {
 body.dark-mode .dropdown-content {
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid var(--glass-border);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 body.dark-mode .dropdown-content a {
