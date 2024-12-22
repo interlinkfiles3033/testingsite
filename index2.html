@@ -93,6 +93,10 @@
         .theme-toggle {
             padding: 10px;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: inherit;
+            font: inherit;
         }
     </style>
 </head>
@@ -116,7 +120,7 @@
             <span class="tagline"><h1 style="font-size:1vw">"For freshmen, by freshmen"</h1></span>
         </div>
         <div id="nav-container"></div>
-        <div class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</div>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
     </header>
 
     <main class="fade-in">
