@@ -496,6 +496,7 @@ nav {
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
     transition: all var(--transition-speed) ease;
 }
 
