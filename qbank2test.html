@@ -159,6 +159,7 @@
             <h1 class="glow-text">Question Bank</h1>
         </div>
         <div id="nav-container"></div>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
     </header>
     <main class="fade-in">
         <div class="games-container">
@@ -1045,6 +1046,17 @@
         // Load navigation and banner
         loadNav();
         loadBanner();
+        
+        function toggleTheme() {
+            const body = document.body;
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            }
+        }
     </script>
 </body>
 </html>
