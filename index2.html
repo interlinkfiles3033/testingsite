@@ -201,14 +201,14 @@
                             <a href="https://interlinkcvhs.org/tutoring"><strong>Peer Tutoring</strong></a>
                             <a href="https://interlinkcvhs.org/extra/deepdives"><strong>Podcasts</strong></a>
                             <a href="https://interlinkcvhs.org/qotd"><strong>QOTD</strong></a>
-                            <a href="https://interlinkcvhs.org/qotd"><strong>QOTD</strong></a>
-                            <a href="https://interlinkcvhs.org/qbank" class="nav-link"><strong>QBank</strong></a>
-                            <a href="https://interlinkcvhs.org/quizlets" class="nav-link"><strong>Quizlets</strong></a>
+                            <a href="https://interlinkcvhs.org/qbank"><strong>QBank</strong></a>
+                            <a href="https://interlinkcvhs.org/quizlets"><strong>Quizlets</strong></a>
                             <a href="https://interlinkcvhs.org/extra/productivity"><strong>Productivity Tools</strong></a>
                         </div>
                     </div>
-                    <button class="dropbtn"><strong>Subject Study</strong></button>
-                    <div class="dropdown-content">
+                    <div class="dropdown">
+                        <button class="dropbtn"><strong>Subject Study</strong></button>
+                        <div class="dropdown-content">
                             <a href="#"><strong>English</strong></a>
                             <a href="#"><strong>Science</strong></a>
                             <a href="#"><strong>Math</strong></a>
@@ -216,6 +216,7 @@
                             <a href="#"><strong>Fine Arts</strong></a>
                             <a href="#"><strong>Other</strong></a>
                         </div>
+                    </div>
                     <a href="https://interlinkcvhs.org/credits" class="nav-link"><strong>Credits</strong></a>
                     <button class="theme-toggle" onclick="toggleTheme()"><strong>Theme Toggle</strong></button>
                 </div>
@@ -440,7 +441,7 @@
         
         async function loadNav() {
             try {
-                const response = await fetch('https://interlinkcvhs.org/navnav.html');
+                const response = await fetch('https://interlinkcvhs.org/navnav2.html');
                 const nav = await response.text();
                 document.getElementById('nav-container').innerHTML = nav;
             } catch (error) {
