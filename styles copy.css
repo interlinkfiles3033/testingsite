@@ -1152,7 +1152,7 @@ body.light-mode .glass-header {
 }
 
 body.light-mode nav {
-    background: rgba(240, 240, 240, 0.9); /* Slightly darker background for navbar */
+    background: rgba(213, 212, 212, 0.9); /* Slightly darker background for navbar */
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -1192,7 +1192,7 @@ body.dark-mode {
 }
 
 body.dark-mode .assignment-card {
-    background: var(--glass-background);
+    background: #1a1b1c;
     border: 1px solid var(--glass-border);
     color: var(--text-light);
 }
@@ -1207,7 +1207,7 @@ body.dark-mode .glass-header {
 }
 
 body.dark-mode nav {
-    background: rgba(30, 30, 30, 0.9); /* Slightly lighter background for navbar */
+    background: rgba(83, 83, 83, 0.9); /* Slightly lighter background for navbar */
     border-bottom: 1px solid var(--glass-border);
 }
 
