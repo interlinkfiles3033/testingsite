@@ -36,6 +36,8 @@ body {
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
     line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* ==========================================================================
@@ -85,6 +87,15 @@ h2, h3, h4, h5, h6 {
     position: sticky;
     top: 0;
     z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-background);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ==========================================================================
@@ -367,6 +378,10 @@ nav {
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    justify-content: center;
 }
 
 .assignment-card {
@@ -374,6 +389,11 @@ nav {
     animation: fadeIn 0.5s ease;
     position: relative;
     overflow: hidden;
+    padding: 2em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+    text-align: center;
 }
 
 .assignment-card::before {
@@ -413,6 +433,7 @@ nav {
     color: var(--text-light);
     opacity: 0.8;
     margin: 0.5rem 0;
+    color: var(--text-color);
 }
 
 /* ==========================================================================
@@ -498,6 +519,12 @@ nav {
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     transition: all var(--transition-speed) ease;
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
 }
 
 .theme-toggle:hover {
@@ -646,6 +673,9 @@ body.light-mode .theme-toggle {
         flex-direction: column;
         text-align: center;
         padding: 1rem;
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     nav {
@@ -676,6 +706,19 @@ body.light-mode .theme-toggle {
     
     .section-title {
         font-size: 1.5rem;
+    }
+    .logo-container {
+        padding-right: 50px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .period-table th, .period-table td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+    .assignment-card {
+        min-width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -1024,6 +1067,7 @@ canvas {
    grid-template-columns: repeat(3, 1fr);
    gap: 20px;
    margin-bottom: 30px;
+   margin-bottom: 20px;
 }
 
 .question-table {
@@ -1230,4 +1274,26 @@ body.dark-mode .dropdown-content a {
 
 body.dark-mode .dropdown-content a:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+main {
+    padding: 20px;
+}
+
+.period-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.period-table th, .period-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.period-table select {
+    padding: 5px;
+    font-size: 1em;
+    width: 100%;
 }
