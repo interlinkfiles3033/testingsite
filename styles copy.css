@@ -1141,6 +1141,15 @@ body.light-mode .assignment-card {
     color: var(--text-dark);
 }
 
+body.light-mode .assignment-details {
+    color: var(--text-dark);
+}
+
+body.light-mode .glass-header {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--border-color);
+}
+
 /* Dark Mode */
 body.dark-mode {
     background: var(--background-dark);
@@ -1151,4 +1160,13 @@ body.dark-mode .assignment-card {
     background: var(--glass-background);
     border: 1px solid var(--glass-border);
     color: var(--text-light);
+}
+
+body.dark-mode .assignment-details {
+    color: var(--text-light);
+}
+
+body.dark-mode .glass-header {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--glass-border);
 }
