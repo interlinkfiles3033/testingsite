@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InterlinkCVHS</title>
-    <link rel="stylesheet" href="https://interlinkcvhs.org/styles.css">
+    <link rel="stylesheet" href="styles copy.css">
     <link rel="icon" href="https://interlinkcvhs.org/favicon.png" type="image/png">
     <style>
         :root {
@@ -350,9 +350,14 @@
         });
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute("data-theme");
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", newTheme);
+            const body = document.body;
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            }
         }
     </script>
 </body>
