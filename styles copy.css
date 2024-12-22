@@ -1152,7 +1152,7 @@ body.light-mode .glass-header {
 }
 
 body.light-mode nav {
-    background: rgba(213, 212, 212, 0.9); /* Slightly darker background for navbar */
+    background: rgba(197, 196, 196, 0.9); /* Slightly darker background for navbar */
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -1202,7 +1202,7 @@ body.dark-mode .assignment-details {
 }
 
 body.dark-mode .glass-header {
-    background: rgba(30, 30, 30, 0.9); /* Slightly lighter background for glass header */
+    background: rgba(12, 12, 12, 0.9); /* Slightly lighter background for glass header */
     border-bottom: 1px solid var(--glass-border);
 }
 
