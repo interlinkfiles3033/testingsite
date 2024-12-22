@@ -30,12 +30,6 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #000000, #0A192F);
-    background-color: var(--bg-color);
-    color: var(--text-light);
-    min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
-    line-height: 1.6;
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -77,16 +71,6 @@ h2, h3, h4, h5, h6 {
 }
 
 .glass-header {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--glass-border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -349,6 +333,12 @@ nav {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .glass-header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     nav {
         flex-direction: column;
         text-align: center;
@@ -365,347 +355,6 @@ nav {
     
     .banner-text {
         font-size: 1.8rem;
-    }
-}
-
-/* ==========================================================================
-   Assignment Cards
-   ========================================================================== */
-.assignments-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    justify-content: center;
-}
-
-.assignment-card {
-    padding: 1.5rem;
-    animation: fadeIn 0.5s ease;
-    position: relative;
-    overflow: hidden;
-    padding: 2em;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background-color: var(--card-background);
-    text-align: center;
-}
-
-.assignment-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.assignment-card:hover::before {
-    transform: translateX(100%);
-}
-
-.assignment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.assignment-title {
-    margin: 0;
-    color: var(--accent-color);
-}
-
-.due-date {
-    font-size: 0.9rem;
-    color: #888;
-}
-
-.assignment-details {
-    color: var(--text-light);
-    opacity: 0.8;
-    margin: 0.5rem 0;
-    color: var(--text-color);
-}
-
-/* ==========================================================================
-   Resource Cards
-   ========================================================================== */
-.resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 0 2rem;
-}
-
-.resource-card {
-    padding: 1.5rem;
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.resource-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.resource-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.resource-card:hover::before {
-    transform: translateX(100%);
-}
-
-.resource-title {
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-.resource-description {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   Buttons and Interactive Elements
-   ========================================================================== */
-.access-btn, .submit-btn {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-}
-
-.access-btn:hover, .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
-}
-
-.theme-toggle {
-    background: none;
-    border: 2px solid var(--text-light);
-    color: var(--text-light);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-    transition: all var(--transition-speed) ease;
-    padding: 10px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-}
-
-.theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.controls-container {
-    display: flex;
-    justify-content: space-between; /* Space out the items */
-    align-items: center; /* Center items vertically */
-    padding: 1rem; /* Add padding as needed */
-}
-
-.controls-container select,
-.controls-container input[type="range"],
-.controls-container button {
-    margin-right: 1rem; /* Add space between items */
-}
-
-.controls-container div {
-    display: flex;
-    align-items: center; /* Align label and input in the center */
-}
-
-
-/* ==========================================================================
-   Modal Styles
-   ========================================================================== */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: auto;
-    z-index: 1000;
-    animation: fadeIn var(--transition-speed) ease;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.modal.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.modal-content {
-    padding: 2rem;
-    position: relative;
-    max-width: 400px;
-    width: 90%;
-    animation: slideIn var(--transition-speed) ease;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: transform var(--transition-speed) ease;
-}
-
-.close-btn:hover {
-    transform: rotate(90deg);
-}
-
-/* ==========================================================================
-   Dark Mode Styles
-   ========================================================================== */
-body.dark {
-    background: linear-gradient(135deg, #000000, #0A192F);
-}
-
-.dark-theme {
-    background: linear-gradient(135deg, #000000, #0A192F);
-}
-
-.dark-theme .glass-header {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-/* ==========================================================================
-   Container Layouts
-   ========================================================================== */
-.art-content-container,
-.secret-content-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* ==========================================================================
-   Form Elements
-   ========================================================================== */
-input[type="password"] {
-    width: 100%;
-    padding: 0.75rem;
-    margin: 1rem 0;
-    border: 1px solid var(--glass-border);
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-light);
-    font-size: 1rem;
-}
-
-input[type="password"]:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
-}
-
-body.light-mode {
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    color: var(--text-dark);
-}
-
-body.light-mode .glass-header {
-    background: rgba(255, 255, 255, 0.7);
-}
-
-body.light-mode .glass-effect {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(33, 150, 243, 0.2);
-}
-
-body.light-mode .nav-link,
-body.light-mode .theme-toggle {
-    color: var(--text-dark);
-    border-color: var(--text-dark);
-}
-
-/* ==========================================================================
-   Responsive Design
-   ========================================================================== */
-@media (max-width: 768px) {
-    .glass-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-        padding: 10px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    nav {
-        margin-top: 1rem;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .dropdown {
-        width: 100%;
-    }
-    
-    .dropdown-content {
-        width: 100%;
-        position: static;
-    }
-    
-    .assignments-container,
-    .resources-grid {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-    }
-    
-    .art-content-container,
-    .secret-content-container {
-        padding: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
     }
     .logo-container {
         padding-right: 50px;
@@ -1296,4 +945,32 @@ main {
     padding: 5px;
     font-size: 1em;
     width: 100%;
+}
+
+.assignments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;
+}
+
+.assignment-card {
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+    text-align: center;
+}
+
+.assignment-details {
+    color: var(--text-color);
+}
+
+.theme-toggle {
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
 }
