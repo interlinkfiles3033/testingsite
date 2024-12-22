@@ -1207,7 +1207,7 @@ body.dark-mode .glass-header {
 }
 
 body.dark-mode nav {
-    background: rgba(56, 56, 56, 0.9); /* Slightly lighter background for navbar */
+    background: rgba(40, 40, 40, 0.9); /* Slightly lighter background for navbar */
     border-bottom: 1px solid var(--glass-border);
 }
 
