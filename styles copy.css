@@ -1150,6 +1150,31 @@ body.light-mode .glass-header {
     border-bottom: 1px solid var(--border-color);
 }
 
+body.light-mode nav {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.light-mode .nav-link,
+body.light-mode .theme-toggle,
+body.light-mode .dropbtn {
+    color: var(--text-dark);
+    border-color: var(--text-dark);
+}
+
+body.light-mode .dropdown-content {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .dropdown-content a {
+    color: var(--text-dark);
+}
+
+body.light-mode .dropdown-content a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 /* Dark Mode */
 body.dark-mode {
     background: var(--background-dark);
@@ -1169,4 +1194,29 @@ body.dark-mode .assignment-details {
 body.dark-mode .glass-header {
     background: rgba(0, 0, 0, 0.9);
     border-bottom: 1px solid var(--glass-border);
+}
+
+body.dark-mode nav {
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+body.dark-mode .nav-link,
+body.dark-mode .theme-toggle,
+body.dark-mode .dropbtn {
+    color: var(--text-light);
+    border-color: var(--text-light);
+}
+
+body.dark-mode .dropdown-content {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--glass-border);
+}
+
+body.dark-mode .dropdown-content a {
+    color: var(--text-light);
+}
+
+body.dark-mode .dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
