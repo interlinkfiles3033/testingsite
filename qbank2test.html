@@ -11,7 +11,98 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <style>        
+    <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --header-background: rgba(255, 255, 255, 0.1);
+            --card-background: rgba(255, 255, 255, 0.8);
+            --border-color: #ddd;
+        }
+        [data-theme="dark"] {
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --header-background: rgba(0, 0, 0, 0.1);
+            --card-background: rgba(0, 0, 0, 0.8);
+            --border-color: #444;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .glass-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-background);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .period-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .period-table th, .period-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .period-table select {
+            padding: 5px;
+            font-size: 1em;
+            width: 100%;
+        }
+        .assignments-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .assignments-row {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+        }
+        .assignment-card {
+            flex: 1;
+            min-width: calc(33.333% - 14px);
+            max-width: calc(33.333% - 14px);
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .assignment-details {
+            color: var(--text-color);
+        }
+        @media screen and (max-width: 768px) {
+            .glass-header {
+                padding: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .logo-container {
+                padding-right: 50px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        .theme-toggle {
+            padding: 10px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: inherit;
+            font: inherit;
+        }       
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -1046,7 +1137,7 @@
         // Load navigation and banner
         loadNav();
         loadBanner();
-        
+
         function toggleTheme() {
             const body = document.body;
             if (body.classList.contains('dark-mode')) {
