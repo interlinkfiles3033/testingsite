@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="https://interlinkcvhs.org/styles.css">
     <link rel="icon" href="https://interlinkcvhs.org/favicon.png" type="image/png">
     <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+        }
+        [data-theme="dark"] {
+            --background-color: #000000;
+            --text-color: #ffffff;
+        }
         body {
             margin: 0;
             padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
         .glass-header {
             position: sticky;
@@ -61,6 +71,13 @@
                 flex-direction: column;
                 text-align: center;
             }
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -120,7 +137,7 @@
             <!-- Assignment cards will be dynamically inserted here -->
         </div>
     </main>
-
+    <div class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</div>
     <script>
         const SHEET_ID = '1VDAI3EJC7Wf9tp7TKr__Y6CFzalE5aw43bVq5Bk02NA';
         const API_KEY = 'AIzaSyDFFmaGCZTbWVjedTxSyvkxg7obqvxDinw';
@@ -321,6 +338,12 @@
             loadNav();
             fetchAssignments();
         });
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+        }
     </script>
 </body>
 </html>
