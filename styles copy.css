@@ -973,6 +973,7 @@ main {
 
 .assignment-description {
     display: none;
+    color: var(--description-text-color);
 }
 
 .assignment-card.active .assignment-header,
