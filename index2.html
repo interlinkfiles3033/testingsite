@@ -6,8 +6,6 @@
     <title>InterlinkCVHS</title>
     <link rel="stylesheet" href="styles copy.css">
     <link rel="icon" href="https://interlinkcvhs.org/favicon.png" type="image/png">
-    <link rel="stylesheet" href="style3.css">
-    <script src="script2.js" defer></script>
     <style>
         :root {
             --background-color: #ffffff;
@@ -60,17 +58,23 @@
             width: 100%;
         }
         .assignments-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .assignments-row {
+            display: flex;
+            width: 100%;
+            gap: 20px;
         }
         .assignment-card {
-            padding: 1em;
+            flex: 1;
+            min-width: calc(33.333% - 14px);
+            max-width: calc(33.333% - 14px);
+            background: var(--card-background);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background-color: var(--card-background);
-            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
         }
         .assignment-details {
             color: var(--text-color);
@@ -124,24 +128,84 @@
             <h1 class="glow-text">Interlink</h1>
             <span class="tagline"><h1 style="font-size:1vw">"For freshmen, by freshmen"</h1></span>
         </div>
-        <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
-        </button>
-        <nav id="navbar">
-            <ul>
-                <li>
-                    <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
-                    </button>
-                </li>
-                <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="features.html">Features</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a class="accent-link" href="login.html">Login</a></li>
-            </ul>
-        </nav>
-        <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+        <div id="nav-container">
+            <style>
+            /* Base styles */
+            .nav {
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-link {
+                color: white;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                margin: 0 0.5rem;
+                font-weight: normal;
+            }
+            
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                font-weight: normal;
+            }
+            
+            .dropbtn {
+                background: transparent;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                color: white;
+                font-family: inherit;
+                font-size: inherit;
+                margin: 0 0.5rem;
+                font-weight: normal;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                z-index: 1;
+                font-weight: normal;
+            }
+            
+            .dropdown-content a {
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-weight: normal;
+            }
+            
+            .dropdown-content a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                font-weight: normal;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            </style>
+            <nav class="nav">
+                <div class="nav-links">
+                    <!-- Add your nav links here -->
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+            </nav>
+            <script>
+            function toggleMenu() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.toggle('active');
+            }
+            </script>
+        </div>
     </header>
 
     <main class="fade-in">
