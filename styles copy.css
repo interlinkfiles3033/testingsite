@@ -831,7 +831,7 @@ body.light-mode {
 }
 
 body.light-mode .assignment-card {
-    background: #f0f0f0; /* Slightly darker background for assignment card */
+    background: #f3f3f3; /* Slightly darker background for assignment card */
     border: 1px solid var(--border-color);
     color: var(--text-dark);
 }
