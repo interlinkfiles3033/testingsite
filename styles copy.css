@@ -960,10 +960,16 @@ main {
     border-radius: 10px;
     background-color: var(--card-background);
     text-align: center;
+    cursor: pointer;
 }
 
 .assignment-details {
     color: var(--text-color);
+    display: none;
+}
+
+.assignment-card.active .assignment-details {
+    display: block;
 }
 
 .theme-toggle {
