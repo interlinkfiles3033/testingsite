@@ -963,13 +963,42 @@ main {
     cursor: pointer;
 }
 
-.assignment-details {
+.assignment-details, .assignment-description {
     color: var(--text-color);
+}
+
+.assignment-description {
     display: none;
 }
 
-.assignment-card.active .assignment-details {
+.assignment-card.active .assignment-header,
+.assignment-card.active .assignment-content {
+    display: none;
+}
+
+.assignment-card.active .assignment-description {
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .glass-header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-container {
+        padding-right: 50px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .period-table th, .period-table td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+    .assignment-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
 }
 
 .theme-toggle {
@@ -1040,12 +1069,20 @@ main {
     cursor: pointer;
 }
 
-.assignment-details {
+.assignment-details, .assignment-description {
     color: var(--text-color);
+}
+
+.assignment-description {
     display: none;
 }
 
-.assignment-card.active .assignment-details {
+.assignment-card.active .assignment-header,
+.assignment-card.active .assignment-content {
+    display: none;
+}
+
+.assignment-card.active .assignment-description {
     display: block;
 }
 

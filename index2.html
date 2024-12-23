@@ -71,11 +71,17 @@
             text-align: center;
             cursor: pointer;
         }
-        .assignment-details {
+        .assignment-details, .assignment-description {
             color: var(--text-color);
+        }
+        .assignment-description {
             display: none;
         }
-        .assignment-card.active .assignment-details {
+        .assignment-card.active .assignment-header,
+        .assignment-card.active .assignment-content {
+            display: none;
+        }
+        .assignment-card.active .assignment-description {
             display: block;
         }
         @media screen and (max-width: 768px) {
@@ -290,7 +296,9 @@
                         </div>
                         <div class="assignment-content">
                             <p class="assignment-details">${assignment.title}</p>
-                            <p class="assignment-description">${assignment.description}</p>
+                        </div>
+                        <div class="assignment-description">
+                            <p>${assignment.description}</p>
                         </div>
                     `;
                     card.addEventListener('click', () => {
