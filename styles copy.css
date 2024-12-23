@@ -477,7 +477,7 @@ canvas {
    transition: all var(--transition-speed) ease;
 }
 
-.close-button:hover {
+close-button:hover {
    background: rgba(255, 255, 255, 0.1);
    transform: rotate(90deg);
 }
