@@ -972,14 +972,11 @@ main {
     transition: color var(--transition-speed);
 }
 
-.dark-mode .assignment-description {
+.assignment-description {
     display: none;
-    color: #cccccc;
+    color: var(--description-text-color);
 }
-.light-mode .assignment-description {
-    display: none;
-    color: #333333;
-}
+
 .assignment-card.active .assignment-header,
 .assignment-card.active .assignment-content {
     display: none;
