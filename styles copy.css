@@ -980,3 +980,101 @@ main {
     color: inherit;
     font: inherit;
 }
+
+/* Base styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.glass-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-background);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.period-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.period-table th, .period-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.period-table select {
+    padding: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.assignments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;
+}
+
+.assignment-card {
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+    text-align: center;
+    cursor: pointer;
+}
+
+.assignment-details {
+    color: var(--text-color);
+    display: none;
+}
+
+.assignment-card.active .assignment-details {
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .glass-header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-container {
+        padding-right: 50px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .period-table th, .period-table td {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+    .assignment-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+.theme-toggle {
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+}
