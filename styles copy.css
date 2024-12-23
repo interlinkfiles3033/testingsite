@@ -974,3 +974,34 @@ main {
     color: inherit;
     font: inherit;
 }
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
