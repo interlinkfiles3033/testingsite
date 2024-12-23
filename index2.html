@@ -58,23 +58,17 @@
             width: 100%;
         }
         .assignments-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .assignments-row {
-            display: flex;
-            width: 100%;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            justify-content: center;
         }
         .assignment-card {
-            flex: 1;
-            min-width: calc(33.333% - 14px);
-            max-width: calc(33.333% - 14px);
-            background: var(--card-background);
+            padding: 2em;
             border: 1px solid var(--border-color);
-            padding: 10px;
-            border-radius: 5px;
+            border-radius: 10px;
+            background-color: var(--card-background);
+            text-align: center;
         }
         .assignment-details {
             color: var(--text-color);
