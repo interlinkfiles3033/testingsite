@@ -101,36 +101,6 @@
             color: inherit;
             font: inherit;
         }
-        /* Hamburger menu styles */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-color);
-            margin: 4px 0;
-            transition: 0.4s;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-        }
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -152,20 +122,84 @@
             <h1 class="glow-text">Interlink</h1>
             <span class="tagline"><h1 style="font-size:1vw">"For freshmen, by freshmen"</h1></span>
         </div>
-        <nav>
-            <div class="hamburger" id="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="nav-links" id="nav-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link">Contact</a>
+        <div id="nav-container">
+            <style>
+            /* Base styles */
+            .nav {
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-link {
+                color: white;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                margin: 0 0.5rem;
+                font-weight: normal;
+            }
+            
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                font-weight: normal;
+            }
+            
+            .dropbtn {
+                background: transparent;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                color: white;
+                font-family: inherit;
+                font-size: inherit;
+                margin: 0 0.5rem;
+                font-weight: normal;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                z-index: 1;
+                font-weight: normal;
+            }
+            
+            .dropdown-content a {
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-weight: normal;
+            }
+            
+            .dropdown-content a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                font-weight: normal;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            </style>
+            <nav class="nav">
+                <div class="nav-links">
+                    <!-- Add your nav links here -->
+                </div>
                 <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
-            </div>
-        </nav>
+            </nav>
+            <script>
+            function toggleMenu() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.toggle('active');
+            }
+            </script>
+        </div>
     </header>
 
     <main class="fade-in">
@@ -202,7 +236,6 @@
             <!-- Assignment cards will be dynamically inserted here -->
         </div>
     </main>
-    <script src="script2.js"></script>
     <script>
         const SHEET_ID = '1VDAI3EJC7Wf9tp7TKr__Y6CFzalE5aw43bVq5Bk02NA';
         const API_KEY = 'AIzaSyDFFmaGCZTbWVjedTxSyvkxg7obqvxDinw';
@@ -414,14 +447,6 @@
                 body.classList.add('dark-mode');
             }
         }
-
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
     </script>
 </body>
 </html>
