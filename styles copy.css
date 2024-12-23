@@ -35,6 +35,77 @@ body {
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
+.glass-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-background);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.period-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.period-table th, .period-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.period-table select {
+    padding: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.assignments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;
+}
+
+.assignment-card {
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--card-background);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    height: 150px; /* Fixed height to maintain size */
+}
+
+.assignment-details, .assignment-description {
+    color: var(--text-color);
+    transition: color var(--transition-speed);
+}
+
+.assignment-description {
+    display: none;
+    color: var(--description-text-color);
+}
+
+.assignment-card.active .assignment-header,
+.assignment-card.active .assignment-content {
+    display: none;
+}
+
+.assignment-card.active .assignment-description {
+    display: block;
+}
+
 /* ==========================================================================
    Typography
    ========================================================================== */
@@ -69,18 +140,6 @@ h2, h3, h4, h5, h6 {
 .glass-effect:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
-}
-
-.glass-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--header-background);
-    backdrop-filter: blur(10px);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 /* ==========================================================================
@@ -925,86 +984,6 @@ body.dark-mode .dropdown-content a {
 
 body.dark-mode .dropdown-content a:hover {
     background: rgba(255, 255, 255, 0.1);
-}
-
-main {
-    padding: 20px;
-}
-
-.period-table {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-}
-
-.period-table th, .period-table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-}
-
-.period-table select {
-    padding: 5px;
-    font-size: 1em;
-    width: 100%;
-}
-
-.assignments-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    justify-content: center;
-}
-
-.assignment-card {
-    padding: 1em;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background-color: var(--card-background);
-    text-align: center;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease;
-    height: 150px; /* Fixed height to maintain size */
-}
-
-.assignment-details, .assignment-description {
-    color: var(--text-color);
-    transition: color var(--transition-speed);
-}
-
-.assignment-description {
-    display: none;
-    color: var(--description-text-color);
-}
-
-.assignment-card.active .assignment-header,
-.assignment-card.active .assignment-content {
-    display: none;
-}
-
-.assignment-card.active .assignment-description {
-    display: block;
-}
-
-@media screen and (max-width: 768px) {
-    .glass-header {
-        padding: 10px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .logo-container {
-        padding-right: 50px;
-        flex-direction: column;
-        text-align: center;
-    }
-    .period-table th, .period-table td {
-        padding: 5px;
-        font-size: 0.8em;
-    }
-    .assignment-card {
-        min-width: 100%;
-        max-width: 100%;
-    }
 }
 
 .theme-toggle {
