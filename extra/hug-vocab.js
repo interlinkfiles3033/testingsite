@@ -82,7 +82,7 @@ const navigateCards = (direction) => {
     // Get the current list of terms based on filters
     filteredTerms = vocabularyData.filter(item => {
         if (isWeeklyMode) {
-            return item.Front.includes('!');
+            return item.Term.includes('!');
         }
         return true;
     });
@@ -90,8 +90,8 @@ const navigateCards = (direction) => {
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         filteredTerms.sort((a, b) => {
-            const termA = a.Front.replace(/!R?/g, '').toLowerCase();
-            const termB = b.Front.replace(/!R?/g, '').toLowerCase();
+            const termA = a.Term.replace(/!R?/g, '').toLowerCase();
+            const termB = b.Term.replace(/!R?/g, '').toLowerCase();
             return termA.localeCompare(termB);
         });
     }
@@ -161,16 +161,16 @@ const drawCard = () => {
         ctx.textBaseline = 'middle';
 
         // Completely remove '!' and '!R'
-        const cleanFront = currentCard.Front.replace(/!R?/g, '');
-        const cleanBack = currentCard.Back.replace(/!R?/g, '');
+        const cleanTerm = currentCard.Term.replace(/!R?/g, '');
+        const cleanDefinition = currentCard.Definition.replace(/!R?/g, '');
 
         const text = isFlipped 
-            ? cleanBack 
-            : cleanFront;
+            ? cleanDefinition 
+            : cleanTerm;
         
         // Check if it's a repeat or weekly term
-        const isRepeat = currentCard.Front.includes('!R');
-        const isWeekly = currentCard.Front.includes('!');
+        const isRepeat = currentCard.Term.includes('!R');
+        const isWeekly = currentCard.Term.includes('!');
 
         // Modify text color and styling
         if (isRepeatsMode && isRepeat) {
@@ -209,26 +209,26 @@ const updateDropdown = (searchTerm) => {
 
     let matchingTerms = vocabularyData.filter(item => 
         // Remove '!' and '!R' before filtering
-        item.Front.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
+        item.Term.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
     );
 
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         matchingTerms.sort((a, b) => {
-            const termA = a.Front.replace(/!R?/g, '').toLowerCase();
-            const termB = b.Front.replace(/!R?/g, '').toLowerCase();
+            const termA = a.Term.replace(/!R?/g, '').toLowerCase();
+            const termB = b.Term.replace(/!R?/g, '').toLowerCase();
             return termA.localeCompare(termB);
         });
     }
 
     // Calculate total weekly flashcards (with '!')
     const weeklyCount = vocabularyData.filter(item => 
-        item.Front.includes('!')
+        item.Term.includes('!')
     ).length;
 
     // Calculate total repeat flashcards (with '!R')
     const repeatsCount = vocabularyData.filter(item => 
-        item.Front.includes('!R')
+        item.Term.includes('!R')
     ).length;
 
     // Update labels with total numbers
@@ -239,7 +239,7 @@ const updateDropdown = (searchTerm) => {
     if (isWeeklyMode) {
         // Only show terms with '!' when weekly mode is on
         matchingTerms = matchingTerms.filter(item => 
-            item.Front.includes('!')
+            item.Term.includes('!')
         );
     }
 
@@ -248,11 +248,11 @@ const updateDropdown = (searchTerm) => {
         const option = document.createElement('option');
         
         // Completely remove '!' and '!R' for display
-        const cleanTerm = item.Front.replace(/!R?/g, '');
+        const cleanTerm = item.Term.replace(/!R?/g, '');
         const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
         // Check if it's a repeat or weekly term
-        const isRepeat = item.Front.includes('!R');
+        const isRepeat = item.Term.includes('!R');
 
         // Find the matching part of the term
         const lowerCleanTerm = cleanTerm.toLowerCase();
@@ -277,13 +277,13 @@ const updateDropdown = (searchTerm) => {
         }
 
         // Store the original term as value
-        option.value = item.Front;
+        option.value = item.Term;
         
         dropdownList.appendChild(option);
     });
 
     if (matchingTerms.length === 1) {
-        updateCard(matchingTerms[0].Front);
+        updateCard(matchingTerms[0].Term);
     } else {
         currentCard = null;
         drawCard();
@@ -294,7 +294,7 @@ const updateCard = (term) => {
     // Completely remove '!' and '!R' for matching
     const cleanTerm = term.replace(/!R?/g, '');
     currentCard = vocabularyData.find(item => 
-        item.Front.replace(/!R?/g, '').toLowerCase() === cleanTerm.toLowerCase()
+        item.Term.replace(/!R?/g, '').toLowerCase() === cleanTerm.toLowerCase()
     );
     
     // Update search input to clean term
