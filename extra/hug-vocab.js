@@ -401,13 +401,7 @@ flipButton.addEventListener('click', flipCard);
 // Canvas click to flip
 canvas.addEventListener('click', flipCard);
 
-// Call setup navigation after DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    setupNavigation();
-    updateSliderColor();
-});
-
-// Ensure setupNavigation is called after DOM is loaded
+// Call setup navigation only once after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     updateSliderColor();
