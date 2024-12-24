@@ -2,10 +2,10 @@ const fetchVocabularyData = async () => {
     try {
         const response = await fetch('https://sheets.livepolls.app/api/spreadsheets/e20fc709-853b-45be-aa86-8fd4ea90ef8a/Sheet1');
         const data = await response.json();
-        return data.data;
+        return data.data || []; // Return empty array if data is null or undefined
     } catch (error) {
         console.error('Error fetching vocabulary data:', error);
-        return [];
+        return []; // Return empty array in case of error
     }
 };
 
@@ -76,6 +76,9 @@ const updateSliderColor = () => {
 };
 
 const navigateCards = (direction) => {
+    // Ensure vocabularyData is not empty or null
+    if (!vocabularyData || vocabularyData.length === 0) return;
+
     // Get the current list of terms based on filters
     filteredTerms = vocabularyData.filter(item => {
         if (isWeeklyMode) {
@@ -198,6 +201,9 @@ const drawCard = () => {
 };
 
 const updateDropdown = (searchTerm) => {
+    // Ensure vocabularyData is not empty or null
+    if (!vocabularyData || vocabularyData.length === 0) return;
+
     // Remove '!' and '!R' from search term for matching
     const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
@@ -401,7 +407,13 @@ flipButton.addEventListener('click', flipCard);
 // Canvas click to flip
 canvas.addEventListener('click', flipCard);
 
-// Call setup navigation only once after DOM is loaded
+// Call setup navigation after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+    updateSliderColor();
+});
+
+// Ensure setupNavigation is called after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     updateSliderColor();
