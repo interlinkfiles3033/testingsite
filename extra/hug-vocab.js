@@ -2,10 +2,10 @@ const fetchVocabularyData = async () => {
     try {
         const response = await fetch('https://sheets.livepolls.app/api/spreadsheets/4d69aeca-6e4c-458a-b7fe-0a7e765b2e61/Sheet1');
         const data = await response.json();
-        return data.data || []; // Return empty array if data is null or undefined
+        return data.data;
     } catch (error) {
         console.error('Error fetching vocabulary data:', error);
-        return []; // Return empty array in case of error
+        return [];
     }
 };
 
@@ -63,17 +63,20 @@ const updateSliderColor = () => {
     const weeklySlider = document.querySelector('#weeklyToggle + .slider');
     const repeatsSlider = document.querySelector('#repeatsToggle + .slider');
 
+    // Default gray color
     const defaultColor = '#808080';
     const weeklyBlue = '#2196F3';
     const repeatsRed = '#FF6B6B';
 
+    // Weekly slider color
     weeklySlider.style.backgroundColor = isWeeklyMode ? weeklyBlue : defaultColor;
+
+    // Repeats slider color
     repeatsSlider.style.backgroundColor = isRepeatsMode ? repeatsRed : defaultColor;
 };
 
 const navigateCards = (direction) => {
-    if (!vocabularyData || vocabularyData.length === 0) return;
-
+    // Get the current list of terms based on filters
     filteredTerms = vocabularyData.filter(item => {
         if (isWeeklyMode) {
             return item.Term.includes('!');
@@ -81,6 +84,7 @@ const navigateCards = (direction) => {
         return true;
     });
 
+    // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         filteredTerms.sort((a, b) => {
             const termA = a.Term.replace(/!R?/g, '').toLowerCase();
@@ -91,10 +95,13 @@ const navigateCards = (direction) => {
 
     if (filteredTerms.length === 0) return;
 
+    // If there's no current card, start from beginning
     if (!currentCard) {
         currentTermIndex = direction > 0 ? 0 : filteredTerms.length - 1;
     } else {
         currentTermIndex += direction;
+        
+        // Wrap around
         if (currentTermIndex < 0) {
             currentTermIndex = filteredTerms.length - 1;
         } else if (currentTermIndex >= filteredTerms.length) {
@@ -102,6 +109,7 @@ const navigateCards = (direction) => {
         }
     }
 
+    // Update current card and redraw
     currentCard = filteredTerms[currentTermIndex];
     isFlipped = false;
     drawCard();
@@ -149,24 +157,30 @@ const drawCard = () => {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
+        // Completely remove '!' and '!R'
         const cleanTerm = currentCard.Term.replace(/!R?/g, '');
         const cleanDefinition = currentCard.Definition.replace(/!R?/g, '');
 
-        const text = isFlipped ? cleanDefinition : cleanTerm;
+        const text = isFlipped 
+            ? cleanDefinition 
+            : cleanTerm;
         
+        // Check if it's a repeat or weekly term
         const isRepeat = currentCard.Term.includes('!R');
         const isWeekly = currentCard.Term.includes('!');
 
+        // Modify text color and styling
         if (isRepeatsMode && isRepeat) {
-            ctx.fillStyle = '#FF6B6B';
+            ctx.fillStyle = '#FF6B6B';  // Red color for repeat terms
             ctx.font = 'bold 24px Montserrat';
         } else if (isWeekly) {
-            ctx.fillStyle = '#2196F3';
+            ctx.fillStyle = '#2196F3';  // Blue color for weekly terms
             ctx.font = 'bold 24px Montserrat';
         }
 
         const lines = getWrappedText(text, cardWidth - 40);
 
+        // Add (REPEAT) if applicable and repeats mode is on
         if (isRepeat && isRepeatsMode) {
             lines.push('(REPEAT)');
         }
@@ -184,14 +198,15 @@ const drawCard = () => {
 };
 
 const updateDropdown = (searchTerm) => {
-    if (!vocabularyData || vocabularyData.length === 0) return;
-
+    // Remove '!' and '!R' from search term for matching
     const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
     let matchingTerms = vocabularyData.filter(item => 
+        // Remove '!' and '!R' before filtering
         item.Term.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
     );
 
+    // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         matchingTerms.sort((a, b) => {
             const termA = a.Term.replace(/!R?/g, '').toLowerCase();
@@ -200,18 +215,23 @@ const updateDropdown = (searchTerm) => {
         });
     }
 
+    // Calculate total weekly flashcards (with '!')
     const weeklyCount = vocabularyData.filter(item => 
         item.Term.includes('!')
     ).length;
 
+    // Calculate total repeat flashcards (with '!R')
     const repeatsCount = vocabularyData.filter(item => 
         item.Term.includes('!R')
     ).length;
 
+    // Update labels with total numbers
     weeklyLabel.innerHTML = `This Week's Flashcards <span style="color: #2196F3; font-weight: bold;">(${weeklyCount})</span>`;
     repeatsLabel.innerHTML = `Mark Repeats <span style="color: #FF6B6B; font-weight: bold;">(${repeatsCount})</span>`;
 
+    // Filter logic for weekly mode
     if (isWeeklyMode) {
+        // Only show terms with '!' when weekly mode is on
         matchingTerms = matchingTerms.filter(item => 
             item.Term.includes('!')
         );
@@ -221,73 +241,181 @@ const updateDropdown = (searchTerm) => {
     matchingTerms.forEach(item => {
         const option = document.createElement('option');
         
+        // Completely remove '!' and '!R' for display
         const cleanTerm = item.Term.replace(/!R?/g, '');
         const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
+        // Check if it's a repeat or weekly term
         const isRepeat = item.Term.includes('!R');
 
+        // Find the matching part of the term
         const lowerCleanTerm = cleanTerm.toLowerCase();
         const lowerSearchTerm = cleanSearchTerm.toLowerCase();
         const matchIndex = lowerCleanTerm.indexOf(lowerSearchTerm);
 
         if (matchIndex !== -1 && cleanSearchTerm) {
+            // Create highlighted term with bold matching part
             const beforeMatch = cleanTerm.slice(0, matchIndex);
             const matchedPart = cleanTerm.slice(matchIndex, matchIndex + cleanSearchTerm.length);
             const afterMatch = cleanTerm.slice(matchIndex + cleanSearchTerm.length);
             
             option.innerHTML = `${beforeMatch}<strong>${matchedPart}</strong>${afterMatch}`;
         } else {
+            // If no match, display normally
             option.textContent = cleanTerm;
         }
 
+        // Add (REPEAT) if repeats mode is on and term is a repeat
         if (isRepeatsMode && isRepeat) {
-            option.style.fontWeight = 'bold';
-            option.style.color = '#FF6B6B';
+            option.innerHTML += ' <span style="color: #FF6B6B; font-style: italic;">(REPEAT)</span>';
         }
+
+        // Store the original term as value
+        option.value = item.Term;
+        
         dropdownList.appendChild(option);
     });
 
-    const noResultsOption = document.createElement('option');
-    noResultsOption.textContent = 'No matching terms found.';
-    noResultsOption.disabled = true;
-    dropdownList.appendChild(noResultsOption);
+    if (matchingTerms.length === 1) {
+        updateCard(matchingTerms[0].Term);
+    } else {
+        currentCard = null;
+        drawCard();
+    }
 };
 
-// Handle dropdown selection
-dropdownList.addEventListener('change', () => {
-    searchInput.value = dropdownList.value;
-    updateDropdown(searchInput.value);
-    navigateCards(0);
+const updateCard = (term) => {
+    // Completely remove '!' and '!R' for matching
+    const cleanTerm = term.replace(/!R?/g, '');
+    currentCard = vocabularyData.find(item => 
+        item.Term.replace(/!R?/g, '').toLowerCase() === cleanTerm.toLowerCase()
+    );
+    
+    // Update search input to clean term
+    searchInput.value = cleanTerm;
+    
+    isFlipped = false;
+    drawCard();
+};
+
+document.addEventListener('keydown', (e) => {
+    // Skip if focused on input elements
+    if (e.target.tagName.toLowerCase() === 'input' || 
+        e.target.tagName.toLowerCase() === 'textarea' || 
+        e.target.tagName.toLowerCase() === 'select') {
+        return;
+    }
+
+    switch(e.key) {
+        case 'ArrowLeft':
+            e.preventDefault();
+            navigateCards(-1);
+            break;
+        case 'ArrowRight':
+            e.preventDefault();
+            navigateCards(1);
+            break;
+        case ' ':
+            e.preventDefault();
+            flipCard();
+            break;
+    }
 });
 
-// Handle search input
-searchInput.addEventListener('input', () => {
-    updateDropdown(searchInput.value);
-});
+const setupNavigation = () => {
+    const backNav = document.getElementById('backNavigation');
+    const forwardNav = document.getElementById('forwardNavigation');
 
-weeklyToggle.addEventListener('change', () => {
-    isWeeklyMode = weeklyToggle.checked;
+    // Click handlers
+    backNav.addEventListener('click', () => navigateCards(-1));
+    forwardNav.addEventListener('click', () => navigateCards(1));
+
+    // Hover effects
+    backNav.addEventListener('mouseover', () => {
+        backNav.src = 'https://interlinkcvhs.org/qotdBackwardHover.png';
+    });
+    
+    backNav.addEventListener('mouseout', () => {
+        backNav.src = 'https://interlinkcvhs.org/qotdBackward.png';
+    });
+
+    forwardNav.addEventListener('mouseover', () => {
+        forwardNav.src = 'https://interlinkcvhs.org/qotdForwardHover.png';
+    });
+    
+    forwardNav.addEventListener('mouseout', () => {
+        forwardNav.src = 'https://interlinkcvhs.org/qotdForward.png';
+    });
+};
+
+weeklyToggle.addEventListener('change', (e) => {
+    isWeeklyMode = e.target.checked;
+    
+    // If weekly mode is turned off, also turn off repeats mode
+    if (!isWeeklyMode) {
+        repeatsToggle.checked = false;
+        isRepeatsMode = false;
+    }
+    
+    // Clear the search input
+    searchInput.value = '';
+    
+    // Update slider colors
     updateSliderColor();
-    updateDropdown(searchInput.value);
+    
+    // Trigger dropdown update with empty search term
+    updateDropdown('');
 });
 
-repeatsToggle.addEventListener('change', () => {
-    isRepeatsMode = repeatsToggle.checked;
+repeatsToggle.addEventListener('change', (e) => {
+    isRepeatsMode = e.target.checked;
+    
+    // Automatically activate weekly mode when repeats is on
+    if (isRepeatsMode) {
+        weeklyToggle.checked = true;
+        isWeeklyMode = true;
+    }
+    
+    // Clear the search input
+    searchInput.value = '';
+    
+    // Update slider colors
     updateSliderColor();
-    updateDropdown(searchInput.value);
+    
+    // Trigger dropdown update with empty search term
+    updateDropdown('');
 });
 
-// Handle navigation
-backNavigation.addEventListener('click', () => {
-    navigateCards(-1);
+searchInput.addEventListener('input', (e) => {
+    updateDropdown(e.target.value);
 });
 
-forwardNavigation.addEventListener('click', () => {
-    navigateCards(1);
+dropdownList.addEventListener('change', (e) => {
+    // Update card with the selected term, which will automatically clean the term
+    updateCard(e.target.value);
 });
 
-// Initialize
-fetchVocabularyData().then(data => {
-    vocabularyData = data;
-    navigateCards(0);
+flipButton.textContent = 'SPACE';
+flipButton.addEventListener('click', flipCard);
+
+// Canvas click to flip
+canvas.addEventListener('click', flipCard);
+
+// Call setup navigation after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+    updateSliderColor();
 });
+
+// Ensure setupNavigation is called after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+    updateSliderColor();
+});
+
+// Initial call to fetch and setup
+(async () => {
+    vocabularyData = await fetchVocabularyData();
+    updateDropdown('');
+    drawCard();
+})();
