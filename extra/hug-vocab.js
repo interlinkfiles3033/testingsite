@@ -372,6 +372,11 @@ const setupEventListeners = () => {
             updateCard(selectedTerm);
         }
     });
+
+    flipButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        flipCard();
+    });
 };
 
 // Fetch vocabulary data and initialize the application
