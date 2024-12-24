@@ -82,7 +82,7 @@ const navigateCards = (direction) => {
     // Get the current list of terms based on filters
     filteredTerms = vocabularyData.filter(item => {
         if (isWeeklyMode) {
-            return item.Front.includes('!');
+            return item.Front && item.Front.includes('!'); // Ensure Front exists
         }
         return true;
     });
@@ -90,8 +90,8 @@ const navigateCards = (direction) => {
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         filteredTerms.sort((a, b) => {
-            const termA = a.Front.replace(/!R?/g, '').toLowerCase();
-            const termB = b.Front.replace(/!R?/g, '').toLowerCase();
+            const termA = (a.Front || '').replace(/!R?/g, '').toLowerCase(); // Default to empty string if Front is undefined
+            const termB = (b.Front || '').replace(/!R?/g, '').toLowerCase(); // Default to empty string if Front is undefined
             return termA.localeCompare(termB);
         });
     }
@@ -103,7 +103,7 @@ const navigateCards = (direction) => {
         currentTermIndex = direction > 0 ? 0 : filteredTerms.length - 1;
     } else {
         currentTermIndex += direction;
-        
+
         // Wrap around
         if (currentTermIndex < 0) {
             currentTermIndex = filteredTerms.length - 1;
@@ -161,16 +161,16 @@ const drawCard = () => {
         ctx.textBaseline = 'middle';
 
         // Completely remove '!' and '!R'
-        const cleanFront = currentCard.Front.replace(/!R?/g, '');
-        const cleanBack = currentCard.Back.replace(/!R?/g, '');
+        const cleanFront = (currentCard.Front || '').replace(/!R?/g, '');
+        const cleanBack = (currentCard.Back || '').replace(/!R?/g, '');
 
         const text = isFlipped 
             ? cleanBack 
             : cleanFront;
         
         // Check if it's a repeat or weekly term
-        const isRepeat = currentCard.Front.includes('!R');
-        const isWeekly = currentCard.Front.includes('!');
+        const isRepeat = currentCard.Front && currentCard.Front.includes('!R');
+        const isWeekly = currentCard.Front && currentCard.Front.includes('!');
 
         // Modify text color and styling
         if (isRepeatsMode && isRepeat) {
@@ -205,31 +205,25 @@ const updateDropdown = (searchTerm) => {
     if (!vocabularyData || vocabularyData.length === 0) return;
 
     // Remove '!' and '!R' from search term for matching
-    const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
+    const cleanSearchTerm = (searchTerm || '').replace(/!R?/g, '');
 
     let matchingTerms = vocabularyData.filter(item => 
         // Remove '!' and '!R' before filtering
-        item.Front.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
+        (item.Front || '').replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
     );
 
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         matchingTerms.sort((a, b) => {
-            const termA = a.Front.replace(/!R?/g, '').toLowerCase();
-            const termB = b.Front.replace(/!R?/g, '').toLowerCase();
+            const termA = (a.Front || '').replace(/!R?/g, '').toLowerCase();
+            const termB = (b.Front || '').replace(/!R?/g, '').toLowerCase();
             return termA.localeCompare(termB);
         });
     }
 
-    // Calculate total weekly flashcards (with '!')
-    const weeklyCount = vocabularyData.filter(item => 
-        item.Front.includes('!')
-    ).length;
-
-    // Calculate total repeat flashcards (with '!R')
-    const repeatsCount = vocabularyData.filter(item => 
-        item.Front.includes('!R')
-    ).length;
+    // Calculate total weekly flashcards (with '!') and repeat flashcards (with '!R')
+    const weeklyCount = vocabularyData.filter(item => item.Front && item.Front.includes('!')).length;
+    const repeatsCount = vocabularyData.filter(item => item.Front && item.Front.includes('!R')).length;
 
     // Update labels with total numbers
     weeklyLabel.innerHTML = `This Week's Flashcards <span style="color: #2196F3; font-weight: bold;">(${weeklyCount})</span>`;
@@ -238,9 +232,7 @@ const updateDropdown = (searchTerm) => {
     // Filter logic for weekly mode
     if (isWeeklyMode) {
         // Only show terms with '!' when weekly mode is on
-        matchingTerms = matchingTerms.filter(item => 
-            item.Front.includes('!')
-        );
+        matchingTerms = matchingTerms.filter(item => item.Front && item.Front.includes('!'));
     }
 
     dropdownList.innerHTML = '';
@@ -248,11 +240,11 @@ const updateDropdown = (searchTerm) => {
         const option = document.createElement('option');
         
         // Completely remove '!' and '!R' for display
-        const cleanTerm = item.Front.replace(/!R?/g, '');
+        const cleanTerm = (item.Front || '').replace(/!R?/g, '');
         const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
         // Check if it's a repeat or weekly term
-        const isRepeat = item.Front.includes('!R');
+        const isRepeat = item.Front && item.Front.includes('!R');
 
         // Find the matching part of the term
         const lowerCleanTerm = cleanTerm.toLowerCase();
@@ -408,12 +400,6 @@ flipButton.addEventListener('click', flipCard);
 canvas.addEventListener('click', flipCard);
 
 // Call setup navigation after DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    setupNavigation();
-    updateSliderColor();
-});
-
-// Ensure setupNavigation is called after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     updateSliderColor();
