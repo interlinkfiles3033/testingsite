@@ -1,6 +1,6 @@
 const fetchVocabularyData = async () => {
     try {
-        const response = await fetch('https://sheets.livepolls.app/api/spreadsheets/e20fc709-853b-45be-aa86-8fd4ea90ef8a/Sheet1');
+        const response = await fetch('https://sheets.livepolls.app/api/spreadsheets/4d69aeca-6e4c-458a-b7fe-0a7e765b2e61/Sheet1');
         const data = await response.json();
         return data.data || []; // Return empty array if data is null or undefined
     } catch (error) {
