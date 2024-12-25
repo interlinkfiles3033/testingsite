@@ -206,9 +206,6 @@ const updateDropdown = (searchTerm) => {
         item.Term.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
     );
 
-    // Add this line to update the total count display
-    document.getElementById('totalCountDisplay').textContent = `Total: ${matchingTerms.length}`;
-
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
         matchingTerms.sort((a, b) => {
@@ -239,6 +236,9 @@ const updateDropdown = (searchTerm) => {
             item.Term.includes('!')
         );
     }
+
+    // Update filtered count display
+    document.getElementById('totalCountDisplay').textContent = `Filtered: ${matchingTerms.length}`;
 
     dropdownList.innerHTML = '';
     matchingTerms.forEach(item => {
