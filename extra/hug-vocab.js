@@ -197,7 +197,7 @@ const drawCard = () => {
     }
 };
 
-const const updateDropdown = (searchTerm) => {
+const updateDropdown = (searchTerm) => {
     // Remove '!' and '!R' from search term for matching
     const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
