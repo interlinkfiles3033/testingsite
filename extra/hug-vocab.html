@@ -105,6 +105,14 @@
             transform: translateY(-100%);
         }
 
+        .total-count {
+            display: inline-block;
+            margin-left: 1rem;
+            color: white;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+        }
+
         .weekly-container {
             display: flex;
             align-items: center;
@@ -250,6 +258,7 @@
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Search for a term...">
                     <select id="dropdownList"></select>
+                    <span id="totalCountDisplay" style="color: white; font-family: 'Montserrat', sans-serif; margin-left: 15px; font-weight: bold;"></span>
                 </div>
             </center>
             <div class="canvas-wrapper">
