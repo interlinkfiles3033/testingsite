@@ -197,7 +197,7 @@ const drawCard = () => {
     }
 };
 
-const updateDropdown = (searchTerm) => {
+const const updateDropdown = (searchTerm) => {
     // Remove '!' and '!R' from search term for matching
     const cleanSearchTerm = searchTerm.replace(/!R?/g, '');
 
@@ -205,6 +205,9 @@ const updateDropdown = (searchTerm) => {
         // Remove '!' and '!R' before filtering
         item.Term.replace(/!R?/g, '').toLowerCase().includes(cleanSearchTerm.toLowerCase())
     );
+
+    // Add this line to update the total count display
+    document.getElementById('totalCountDisplay').textContent = `Total: ${matchingTerms.length}`;
 
     // Sort alphabetically only if both toggles are off
     if (!isWeeklyMode && !isRepeatsMode) {
