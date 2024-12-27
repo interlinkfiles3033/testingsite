@@ -386,15 +386,18 @@
         });
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
+            body.classList.toggle('dark-mode');
             localStorage.setItem('theme', newTheme);
         }
 
         // Apply the saved theme on page load
         const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
     </script>
 </body>
 </html>
