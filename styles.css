@@ -14,6 +14,8 @@
        --glass-background: rgba(0, 0, 0, 0.5);
        --glass-border: rgba(0, 255, 255, 0.2);
        --transition-speed: 0.3s;
+       --description-text-color-light: #888888;
+       --description-text-color-dark: #cccccc;
    }
    
    /* Reset */
@@ -931,6 +933,15 @@
    
    body.dark-mode .tagline {
        color: var(--text-light);
+   }
+   
+   body.dark-mode .assignment-details, body.dark-mode .assignment-description {
+       color: var(--description-text-color-dark);
+   }
+   
+   .assignment-details, .assignment-description {
+       color: var(--description-text-color-light);
+       transition: color var(--transition-speed);
    }
    
    main {
