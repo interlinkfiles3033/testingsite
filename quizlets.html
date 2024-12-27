@@ -25,7 +25,7 @@
 
         .sidebar {
             width: 350px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.8); /* Dark background for better visibility */
             backdrop-filter: blur(10px);
             overflow-y: auto;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -33,6 +33,12 @@
             height: auto;
             max-height: 84.5vh;
             padding: 20px;
+            color: var(--text-light); /* Light text color */
+        }
+
+        body.light-mode .sidebar {
+            background: rgba(0, 0, 0, 0.8); /* Dark background for light mode */
+            color: var(--text-light); /* Light text color */
         }
 
         .subject-dropdown {
