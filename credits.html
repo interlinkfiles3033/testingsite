@@ -104,7 +104,6 @@
             </div>
         </div>
     </main>
-    <script src="theme-toggle.js"></script>
     <script src="script.js"></script>
     <script>
         // Load navigation from nav.html
@@ -136,6 +135,20 @@
             loadNav();
             loadBanner();
         });
+        
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Apply the saved theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
     </script>
 </body>
 </html>
