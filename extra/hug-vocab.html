@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Geography Vocabulary</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://interlinkfiles3033.github.io/testingsite/styles.css">
-    <link rel="icon" href="https://interlinkfiles3033.github.io/testingsite/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         .game-container {
             position: relative;
@@ -226,7 +226,7 @@
     <header class="glass-header">
         <div class="logo-container">
             <a href="https://interlinkfiles3033.github.io/testingsite">
-                <img src="https://interlinkfiles3033.github.io/testingsite/favicon.png" style="width:50px;height:50px">
+                <img src="favicon.png" style="width:50px;height:50px">
             </a>
             <h1 class="glow-text">Human Geography Vocabulary</h1>
         </div>
@@ -266,9 +266,9 @@
                 </div>
             </center>
             <div class="canvas-wrapper">
-                <img id="backNavigation" class="canvas-navigation" src="https://interlinkfiles3033.github.io/testingsite/qotdBackward.png" alt="Previous">
+                <img id="backNavigation" class="canvas-navigation" src="qotdBackward.png" alt="Previous">
                 <canvas id="gameCanvas" width="1200" height="450"></canvas>
-                <img id="forwardNavigation" class="canvas-navigation" src="https://interlinkfiles3033.github.io/testingsite/qotdForward.png" alt="Next">
+                <img id="forwardNavigation" class="canvas-navigation" src="qotdForward.png" alt="Next">
             </div>
             <button id="flipButton">SPACE</button>
             <div class="nav-instructions">
@@ -276,8 +276,8 @@
             </div>
         </div>
     </main>
-    <script src="https://interlinkfiles3033.github.io/testingsite/script.js"></script>
-    <script src="https://interlinkfiles3033.github.io/testingsite/extra/hug-vocab.js"></script>
+    <script src="script.js"></script>
+    <script src="extra/hug-vocab.js"></script>
     <script>
         async function loadNav() {
             try {
@@ -292,7 +292,7 @@
 
         async function loadBanner() {
             try {
-                const response = await fetch('https://interlinkfiles3033.github.io/testingsite/banner.html');
+                const response = await fetch('banner.html');
                 const bannerContent = await response.text();
                 document.getElementById('banner-container').innerHTML = bannerContent;
             } catch (error) {

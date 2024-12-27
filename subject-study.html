@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subject-Specific Resources</title>
-    <link rel="stylesheet" href="https://interlinkfiles3033.github.io/testingsite/styles.css">
-    <link rel="icon" href="https://interlinkfiles3033.github.io/testingsite/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -117,7 +117,7 @@
     <header class="glass-header">
         <div class="logo-container">
             <a href="https://interlinkfiles3033.github.io/testingsite">
-                <img src="https://interlinkfiles3033.github.io/testingsite/favicon.png" style="width:50px;height:50px">
+                <img src="favicon.png" style="width:50px;height:50px">
             </a>
             <h1 class="glow-text">Subject-Specific Resources</h1>
         </div>
@@ -133,55 +133,55 @@
             </div>
             
             <div class="resources-grid" id="resourcesContainer">
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/human-geography" class="resource-card glass-effect">
+                <a href="subjects/human-geography" class="resource-card glass-effect">
                     <h3 class="resource-title">AP Human Geography</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/biology" class="resource-card glass-effect">
+                <a href="subjects/biology" class="resource-card glass-effect">
                     <h3 class="resource-title">Pre-AP Biology</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/theater" class="resource-card glass-effect">
+                <a href="subjects/theater" class="resource-card glass-effect">
                     <h3 class="resource-title">Theater 1</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/tech-theater" class="resource-card glass-effect">
+                <a href="subjects/tech-theater" class="resource-card glass-effect">
                     <h3 class="resource-title">Tech Theater 1</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/english" class="resource-card glass-effect">
+                <a href="subjects/english" class="resource-card glass-effect">
                     <h3 class="resource-title">English 1</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/algebra2" class="resource-card glass-effect">
+                <a href="subjects/algebra2" class="resource-card glass-effect">
                     <h3 class="resource-title">Algebra 2</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/geometry" class="resource-card glass-effect">
+                <a href="subjects/geometry" class="resource-card glass-effect">
                     <h3 class="resource-title">Geometry</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/algebra1" class="resource-card glass-effect">
+                <a href="subjects/algebra1" class="resource-card glass-effect">
                     <h3 class="resource-title">Algebra 1</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/computer-science" class="resource-card glass-effect">
+                <a href="subjects/computer-science" class="resource-card glass-effect">
                     <h3 class="resource-title">Computer Science 1</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/pe" class="resource-card glass-effect">
+                <a href="subjects/pe" class="resource-card glass-effect">
                     <h3 class="resource-title">Physical Education & Health</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/chemistry" class="resource-card glass-effect">
+                <a href="subjects/chemistry" class="resource-card glass-effect">
                     <h3 class="resource-title">Pre-AP Chemistry</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/spanish1" class="resource-card glass-effect">
+                <a href="subjects/spanish1" class="resource-card glass-effect">
                     <h3 class="resource-title">Spanish I</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/spanish2" class="resource-card glass-effect">
+                <a href="subjects/spanish2" class="resource-card glass-effect">
                     <h3 class="resource-title">Spanish II</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/spanish3" class="resource-card glass-effect">
+                <a href="subjects/spanish3" class="resource-card glass-effect">
                     <h3 class="resource-title">Spanish III</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/french1" class="resource-card glass-effect">
+                <a href="subjects/french1" class="resource-card glass-effect">
                     <h3 class="resource-title">French I</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/french2" class="resource-card glass-effect">
+                <a href="subjects/french2" class="resource-card glass-effect">
                     <h3 class="resource-title">French II</h3>
                 </a>
-                <a href="https://interlinkfiles3033.github.io/testingsite/subjects/french3" class="resource-card glass-effect">
+                <a href="subjects/french3" class="resource-card glass-effect">
                     <h3 class="resource-title">French III</h3>
                 </a>
             </div>
@@ -202,7 +202,7 @@
 
         async function loadBanner() {
             try {
-                const response = await fetch('https://interlinkfiles3033.github.io/testingsite/banner.html');
+                const response = await fetch('banner.html');
                 const bannerContent = await response.text();
                 document.getElementById('banner-container').innerHTML = bannerContent;
             } catch (error) {
