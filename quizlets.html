@@ -37,8 +37,13 @@
         }
 
         body.light-mode .sidebar {
-            background: rgba(255, 255, 255, 0.9); /* Light background for better visibility */
+            background: rgba(232, 231, 231, 0.9); /* Light background for better visibility */
             color: var(--text-dark); /* Dark text color */
+        }
+
+        body.dark-mode .sidebar {
+            background: rgba(52, 52, 52, 0.9); /* Dark background for better visibility */
+            color: var(--text-light); /* Dark text color */
         }
 
         .subject-dropdown {
@@ -62,6 +67,7 @@
             font-size: 1.2em;
             font-weight: 700;
             margin-bottom: 10px;
+            cursor: pointer;
         }
 
         .resource-title:hover {
@@ -71,6 +77,16 @@
         .active {
             background: var(--accent-color);
             color: var(--text-light);
+        }
+
+        body.dark-mode .resource-title.active {
+            background: #333; /* Dark grey for dark mode */
+            color: #efefef; /* Light grey text for dark mode */
+        }
+
+        body.light-mode .resource-title.active {
+            background: #ddd; /* Light grey for light mode */
+            color: #202020; /* Dark grey text for light mode */
         }
 
         .hidden {
