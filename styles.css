@@ -835,18 +835,9 @@
    }
    
    body.light-mode .assignment-card {
-       background: rgba(255, 255, 255, 0.8); /* Slightly darker background for assignment card */
+       background: #f3f3f3; /* Slightly darker background for assignment card */
        border: 1px solid var(--border-color);
        color: var(--text-dark);
-   }
-
-   body.light-mode .resource-card {
-       background: rgba(255, 255, 255, 0.8); /* Same color as light mode assignment card */
-   }
-
-   body.light-mode .dropbtn {
-       background: rgba(255, 255, 255, 0.8); /* Light mode background */
-       color: var(--text-dark); /* Dark text color */
    }
    
    body.light-mode .assignment-details {
@@ -901,15 +892,6 @@
    body.dark-mode .assignment-card {
        background: #1a1b1c;
        border: 1px solid var(--glass-border);
-       color: var(--text-light);
-   }
-
-   body.dark-mode .resource-card {
-       background: var(--glass-background);
-   }
-
-   body.dark-mode .dropbtn {
-       background: var(--glass-background);
        color: var(--text-light);
    }
    
