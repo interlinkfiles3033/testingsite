@@ -7,8 +7,9 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--header-background);
     backdrop-filter: blur(10px);
+    transition: background-color var(--transition-speed);
 }
 
 .nav-link {
@@ -17,6 +18,7 @@
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
     font-weight: normal;
+    transition: color var(--transition-speed);
 }
 
 .dropdown {
@@ -35,6 +37,7 @@
     font-size: inherit;
     margin: 0 0.5rem;
     font-weight: normal;
+    transition: color var(--transition-speed);
 }
 
 .dropdown-content {
@@ -66,6 +69,11 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.nav-link:hover, .dropbtn:hover {
+    background: var(--navbar-hover-color);
+    transition: background-color var(--transition-speed);
 }
 </style>
 </head>
