@@ -24,25 +24,23 @@
 
 /* Theme 1 */
 body.theme-1 {
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --background-color: #2b2b2b;
+    --text-color: #f8f8f8;
+    --card-background: rgba(73, 73, 73, 0.8);
+    --border-color: #ffffff;
+    --description-text-color: #fafafa;
+    --dropdown-background: rgba(72, 72, 72, 0.8);
+    --dropdown-text-color: #ffffff;
+    --dropdown-hover-color: rgba(143, 143, 143, 0.5);
+    --tagline-color: #ffffff;
     --header-background: rgba(255, 255, 255, 0.1);
-    --card-background: rgba(255, 255, 255, 0.8);
-    --border-color: #ddd;
-    --description-text-color: #3c3c3c;
-    --dropdown-background: rgba(255, 255, 255, 0.8);
-    --dropdown-text-color: #000000;
-    --dropdown-hover-color: rgba(200, 200, 200, 0.5);
-    --tagline-color: #000000;
-    --header-background: rgba(255, 255, 255, 0.1);
-    --navbar-hover-color: rgba(200, 200, 200, 0.5);
+    --navbar-hover-color: rgba(168, 168, 168, 0.5);
 }
 
 /* Theme 2 */
 body.theme-2 {
     --background-color: #f0f0f0;
     --text-color: #333333;
-    --header-background: rgba(240, 240, 240, 0.1);
     --card-background: rgba(240, 240, 240, 0.8);
     --border-color: #ccc;
     --description-text-color: #666666;
