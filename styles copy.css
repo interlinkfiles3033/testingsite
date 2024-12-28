@@ -16,6 +16,9 @@
        --transition-speed: 0.3s;
        --description-text-color-light: #202020;
        --description-text-color-dark: #f8f8f8;
+       --dropdown-background: rgba(255, 255, 255, 0.8);
+       --dropdown-text-color: #000000;
+       --tagline-color: #000000;
    }
    
    /* Theme 1 */
@@ -26,6 +29,9 @@
        --card-background: rgba(255, 255, 255, 0.8);
        --border-color: #ddd;
        --description-text-color: #3c3c3c;
+       --dropdown-background: rgba(255, 255, 255, 0.8);
+       --dropdown-text-color: #000000;
+       --tagline-color: #000000;
    }
    
    /* Theme 2 */
@@ -36,6 +42,9 @@
        --card-background: rgba(240, 240, 240, 0.8);
        --border-color: #ccc;
        --description-text-color: #666666;
+       --dropdown-background: rgba(240, 240, 240, 0.8);
+       --dropdown-text-color: #333333;
+       --tagline-color: #333333;
    }
    
    /* Theme 3 */
@@ -46,6 +55,9 @@
        --card-background: rgba(224, 224, 224, 0.8);
        --border-color: #bbb;
        --description-text-color: #555555;
+       --dropdown-background: rgba(224, 224, 224, 0.8);
+       --dropdown-text-color: #444444;
+       --tagline-color: #444444;
    }
    
    /* Theme 4 */
@@ -56,6 +68,9 @@
        --card-background: rgba(208, 208, 208, 0.8);
        --border-color: #aaa;
        --description-text-color: #444444;
+       --dropdown-background: rgba(208, 208, 208, 0.8);
+       --dropdown-text-color: #555555;
+       --tagline-color: #555555;
    }
    
    /* Theme 5 */
@@ -66,6 +81,9 @@
        --card-background: rgba(192, 192, 192, 0.8);
        --border-color: #999;
        --description-text-color: #333333;
+       --dropdown-background: rgba(192, 192, 192, 0.8);
+       --dropdown-text-color: #666666;
+       --tagline-color: #666666;
    }
    
    /* Reset */
@@ -85,6 +103,26 @@
        background-color: var(--background-light);
        color: var(--text-dark);
        transition: background-color var(--transition-speed), color var(--transition-speed);
+   }
+
+   .nav-link, .dropbtn, .tagline {
+       color: var(--text-dark);
+       transition: color var(--transition-speed);
+   }
+
+   body.dark-mode .nav-link, body.dark-mode .dropbtn, body.dark-mode .tagline {
+       color: var(--text-light);
+   }
+
+   .dropdown-content {
+       background: var(--dropdown-background);
+       color: var(--dropdown-text-color);
+       transition: background-color var(--transition-speed), color var(--transition-speed);
+   }
+
+   .tagline {
+       color: var(--tagline-color);
+       transition: color var(--transition-speed);
    }
    
    /* ==========================================================================
