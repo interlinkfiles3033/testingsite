@@ -16,6 +16,7 @@
     --description-text-color-dark: #f8f8f8;
     --dropdown-background: rgba(255, 255, 255, 0.8);
     --dropdown-text-color: #000000;
+    --dropdown-hover-color: rgba(255, 255, 255, 0.1);
     --tagline-color: #000000;
 }
 
@@ -29,6 +30,7 @@ body.theme-1 {
     --description-text-color: #3c3c3c;
     --dropdown-background: rgba(255, 255, 255, 0.8);
     --dropdown-text-color: #000000;
+    --dropdown-hover-color: rgba(200, 200, 200, 0.5);
     --tagline-color: #000000;
 }
 
@@ -42,6 +44,7 @@ body.theme-2 {
     --description-text-color: #666666;
     --dropdown-background: rgba(240, 240, 240, 0.8);
     --dropdown-text-color: #333333;
+    --dropdown-hover-color: rgba(210, 210, 210, 0.5);
     --tagline-color: #333333;
 }
 
@@ -55,6 +58,7 @@ body.theme-3 {
     --description-text-color: #555555;
     --dropdown-background: rgba(224, 224, 224, 0.8);
     --dropdown-text-color: #444444;
+    --dropdown-hover-color: rgba(190, 190, 190, 0.5);
     --tagline-color: #444444;
 }
 
@@ -68,6 +72,7 @@ body.theme-4 {
     --description-text-color: #444444;
     --dropdown-background: rgba(208, 208, 208, 0.8);
     --dropdown-text-color: #555555;
+    --dropdown-hover-color: rgba(170, 170, 170, 0.5);
     --tagline-color: #555555;
 }
 
@@ -81,6 +86,7 @@ body.theme-5 {
     --description-text-color: #333333;
     --dropdown-background: rgba(192, 192, 192, 0.8);
     --dropdown-text-color: #666666;
+    --dropdown-hover-color: rgba(150, 150, 150, 0.5);
     --tagline-color: #666666;
 }
 
@@ -114,6 +120,16 @@ body.dark-mode .nav-link, body.dark-mode .dropbtn, body.dark-mode .tagline {
     background: var(--dropdown-background);
     color: var(--dropdown-text-color);
     transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.dropdown-content a {
+    color: var(--dropdown-text-color);
+    transition: color var(--transition-speed);
+}
+
+.dropdown-content a:hover {
+    background: var(--dropdown-hover-color);
+    transition: background-color var(--transition-speed);
 }
 
 .tagline {
