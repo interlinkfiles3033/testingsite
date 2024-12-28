@@ -588,9 +588,8 @@ body.dark-mode .nav-link, body.dark-mode .dropbtn, body.dark-mode .tagline {
    .logo-container .tagline {
       font-size: 1.2em;
       font-style: italic;
-      color: rgba(255, 255, 255, 0.7);
       font-weight: 300;
-      display: flex; /* Ensure tagline behaves like a flex item */
+      display: flex; 
       align-items: center; /* Align text vertically */
       transition: color var(--transition-speed);
    }
