@@ -18,6 +18,8 @@
     --dropdown-text-color: #000000;
     --dropdown-hover-color: rgba(255, 255, 255, 0.1);
     --tagline-color: #000000;
+    --header-background: rgba(255, 255, 255, 0.1);
+    --navbar-hover-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Theme 1 */
@@ -32,6 +34,8 @@ body.theme-1 {
     --dropdown-text-color: #000000;
     --dropdown-hover-color: rgba(200, 200, 200, 0.5);
     --tagline-color: #000000;
+    --header-background: rgba(255, 255, 255, 0.1);
+    --navbar-hover-color: rgba(200, 200, 200, 0.5);
 }
 
 /* Theme 2 */
@@ -46,6 +50,8 @@ body.theme-2 {
     --dropdown-text-color: #333333;
     --dropdown-hover-color: rgba(210, 210, 210, 0.5);
     --tagline-color: #333333;
+    --header-background: rgba(240, 240, 240, 0.1);
+    --navbar-hover-color: rgba(210, 210, 210, 0.5);
 }
 
 /* Theme 3 */
@@ -60,6 +66,8 @@ body.theme-3 {
     --dropdown-text-color: #444444;
     --dropdown-hover-color: rgba(190, 190, 190, 0.5);
     --tagline-color: #444444;
+    --header-background: rgba(224, 224, 224, 0.1);
+    --navbar-hover-color: rgba(190, 190, 190, 0.5);
 }
 
 /* Theme 4 */
@@ -74,6 +82,8 @@ body.theme-4 {
     --dropdown-text-color: #555555;
     --dropdown-hover-color: rgba(170, 170, 170, 0.5);
     --tagline-color: #555555;
+    --header-background: rgba(208, 208, 208, 0.1);
+    --navbar-hover-color: rgba(170, 170, 170, 0.5);
 }
 
 /* Theme 5 */
@@ -88,6 +98,8 @@ body.theme-5 {
     --dropdown-text-color: #666666;
     --dropdown-hover-color: rgba(150, 150, 150, 0.5);
     --tagline-color: #666666;
+    --header-background: rgba(192, 192, 192, 0.1);
+    --navbar-hover-color: rgba(150, 150, 150, 0.5);
 }
 
 /* Reset */
@@ -135,6 +147,16 @@ body.dark-mode .nav-link, body.dark-mode .dropbtn, body.dark-mode .tagline {
 .tagline {
     color: var(--tagline-color);
     transition: color var(--transition-speed);
+}
+
+.glass-header {
+    background: var(--header-background);
+    transition: background-color var(--transition-speed);
+}
+
+.nav-link:hover, .dropbtn:hover {
+    background: var(--navbar-hover-color);
+    transition: background-color var(--transition-speed);
 }
 
 /* ==========================================================================
