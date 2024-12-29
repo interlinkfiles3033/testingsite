@@ -39,17 +39,17 @@ body.theme-1 {
 
 /* Theme 2 */
 body.theme-2 {
-    --background-color: #f0f0f0;
-    --text-color: #333333;
-    --card-background: rgba(240, 240, 240, 0.8);
+    --background-color: #fbf4ec;
+    --text-color: #161616;
+    --card-background: rgba(246, 241, 235, 0.8);
     --border-color: #ccc;
-    --description-text-color: #666666;
+    --description-text-color: #464039;
     --dropdown-background: rgba(240, 240, 240, 0.8);
     --dropdown-text-color: #333333;
-    --dropdown-hover-color: rgba(210, 210, 210, 0.5);
-    --tagline-color: #333333;
+    --dropdown-hover-color: rgba(209, 183, 141, 0.5);
+    --tagline-color: #3c1b01;
     --header-background: rgba(240, 240, 240, 0.1);
-    --navbar-hover-color: rgba(210, 210, 210, 0.5);
+    --navbar-hover-color: rgba(130, 104, 75, 0.5);
 }
 
 /* Theme 3 */
