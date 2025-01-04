@@ -4,18 +4,18 @@
 <style>
 /* Base styles */
 .nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: flex;
     align-items: center;
     padding: 1rem;
     background: var(--header-background);
     backdrop-filter: blur(10px);
     transition: background-color var(--transition-speed);
-    gap: 0.5rem; /* Add gap between items */
 }
 
 .nav-links {
-    display: contents; /* Use contents to allow grid items to be direct children of .nav */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .nav-link {
@@ -25,14 +25,12 @@
     margin: 0 0.25rem; /* Reduced margin */
     font-weight: normal;
     transition: color var(--transition-speed);
-    text-align: center; /* Center text */
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
     font-weight: normal;
-    text-align: center; /* Center text */
 }
 
 .dropbtn {
@@ -46,7 +44,6 @@
     margin: 0 0.25rem; /* Reduced margin */
     font-weight: normal;
     transition: color var(--transition-speed);
-    text-align: center; /* Center text */
 }
 
 .dropdown-content {
@@ -93,7 +90,6 @@
     margin: 0 0.25rem; /* Reduced margin */
     display: flex;
     align-items: center;
-    justify-content: center; /* Center icon */
 }
 </style>
 </head>
