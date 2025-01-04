@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InterlinkCVHS</title>
     <link rel="stylesheet" href="styles3.css">
-    <link rel="icon" href="https://interlinkcvhs.org/favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         :root {
             --background-color: #ffffff;
@@ -35,104 +35,34 @@
         .glass-header {
             position: sticky;
             top: 0;
-            z-index: 1000;
             background: var(--header-background);
             backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
         }
-        main {
-            padding: 20px;
-        }
-        .period-table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
-        .period-table th, .period-table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-        .period-table select {
-            padding: 5px;
-            font-size: 1em;
-            width: 100%;
-        }
-        .assignments-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            justify-content: center;
-        }
-        .assignment-card {
-            padding: 1em;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background-color: var(--card-background);
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            height: 150px; /* Fixed height to maintain size */
-        }
-        .assignment-details, .assignment-description {
-            color: var(--text-color);
-            transition: color var(--transition-speed);
-        }
-        .assignment-description {
-            display: none;
-            color: var(--description-text-color);
-        }
-        .assignment-card.active .assignment-header,
-        .assignment-card.active .assignment-content {
-            display: none;
-        }
-        .assignment-card.active .assignment-description {
-            display: block;
-        }
-        @media screen and (max-width: 768px) {
-        }
-        .theme-toggle {
-            padding: 10px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: inherit;
-            font: inherit;
-        }
-        /* Base styles */
         .nav {
             display: flex;
             align-items: center;
             padding: 1rem;
-            background: var(--header-background);
-            backdrop-filter: blur(10px);
-            transition: background-color var(--transition-speed);
         }
-
         .nav-links {
             display: flex;
             align-items: center;
             flex-grow: 1;
         }
-
         .nav-link {
             color: var(--text-color);
             text-decoration: none;
             padding: 0.5rem 1rem;
-            margin: 0 0.25rem; /* Reduced margin */
+            margin: 0 0.25rem;
             font-weight: normal;
             transition: color var(--transition-speed);
         }
-
         .dropdown {
             position: relative;
             display: inline-block;
             font-weight: normal;
         }
-
         .dropbtn {
             background: transparent;
             border: none;
@@ -141,11 +71,10 @@
             color: var(--text-color);
             font-family: inherit;
             font-size: inherit;
-            margin: 0 0.25rem; /* Reduced margin */
+            margin: 0 0.25rem;
             font-weight: normal;
             transition: color var(--transition-speed);
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -158,7 +87,6 @@
             font-weight: normal;
             transition: background-color var(--transition-speed), color var(--transition-speed);
         }
-
         .dropdown-content a {
             color: var(--dropdown-text-color);
             padding: 12px 16px;
@@ -167,31 +95,100 @@
             font-weight: normal;
             transition: color var(--transition-speed);
         }
-
         .dropdown-content a:hover {
             background: var(--dropdown-hover-color);
             transition: background-color var(--transition-speed);
         }
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
         .nav-link:hover, .dropbtn:hover {
             background: var(--navbar-hover-color);
             transition: background-color var(--transition-speed);
         }
-
         .theme-toggle {
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem 1rem;
-            margin: 0 0.25rem; /* Reduced margin */
+            margin: 0 0.25rem;
             display: flex;
             align-items: center;
         }
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            #open-sidebar-button {
+                display: block;
+            }
+            #navbar {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100%;
+                background: #333;
+                padding-top: 60px;
+                transition: 0.3s;
+                z-index: 1000;
+            }
+            #navbar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            #navbar ul li {
+                padding: 8px 16px;
+                text-align: left;
+            }
+            #navbar ul li a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+            }
+            #navbar ul li a:hover {
+                background: #575757;
+            }
+            #close-sidebar-button {
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            #open-sidebar-button {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+            }
+        }
     </style>
+    <script>
+        function openSidebar() {
+            document.getElementById('navbar').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'true');
+        }
+
+        function closeSidebar() {
+            document.getElementById('navbar').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'false');
+        }
+    </script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8W81FT4M1N"></script>
@@ -203,6 +200,25 @@
   gtag('config', 'G-8W81FT4M1N');
 </script>
 <body class="theme-1">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+    </button>
+    <nav id="navbar">
+        <ul>
+            <li>
+                <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+                </button>
+            </li>
+            <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a class="accent-link" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
     <div id="banner-container"></div>
     <header class="glass-header">
         <div class="logo-container">
@@ -214,9 +230,7 @@
         </div>
         <div id="nav-container"></div>
     </header>
-    <nav class="nav">
-    </nav>
-    <main class="fade-in">
+    <main id="main-content" class="fade-in">
         <center>
             <h4>We DO NOT support academic dishonesty of any sort.</h4>
         </center>
