@@ -39,11 +39,15 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
         }
         .nav {
             display: flex;
             align-items: center;
-            padding: 1rem;
+            flex-grow: 1;
         }
         .nav-links {
             display: flex;
@@ -116,6 +120,9 @@
             align-items: center;
         }
         @media (max-width: 768px) {
+            .glass-header {
+                display: none;
+            }
             .nav {
                 display: none;
             }
