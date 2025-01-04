@@ -47,6 +47,9 @@
             padding: 20px;
         }
         .period-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
             width: 100%;
             margin-bottom: 20px;
             border-collapse: collapse;
@@ -192,6 +195,17 @@
             margin: 0 0.25rem; /* Reduced margin */
             display: flex;
             align-items: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .period-table {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
         }
     </style>
 </head>
