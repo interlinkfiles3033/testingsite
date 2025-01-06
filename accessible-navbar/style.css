@@ -50,9 +50,6 @@ nav a{
 nav a:hover{
   background-color: var(--hover-color);
 }
-nav a.active-link{
-  border-bottom: 2px solid var(--text-color);
-}
 nav a.accent-link{
   background-color: var(--accent-color);
 }
@@ -127,9 +124,6 @@ nav a.accent-link{
   nav a{
     width: 100%;
     padding-left: 2.5em;
-  }
-  nav a.active-link{
-    border-bottom: none;
   }
   nav .home-li{
     margin-right: unset;
