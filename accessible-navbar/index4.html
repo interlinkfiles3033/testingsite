@@ -192,6 +192,12 @@
             #open-sidebar-button {
                 display: none;
             }
+            #navbar ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
         }
     </style>
     <script>
@@ -205,6 +211,11 @@
             document.getElementById('navbar').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'false');
+        }
+
+        function toggleDropdown(event) {
+            const dropdownContent = event.currentTarget.nextElementSibling;
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </head>
@@ -223,7 +234,7 @@
             <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
             <li>
                 <div class="dropdown">
-                    <button class="dropbtn"><strong>Subject Study</strong></button>
+                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Subject Study</strong></button>
                     <div class="dropdown-content">
                         <a href="#"><strong>English</strong></a>
                         <a href="#"><strong>Science</strong></a>
@@ -236,7 +247,7 @@
             </li>
             <li>
                 <div class="dropdown">
-                    <button class="dropbtn"><strong>Explore</strong></button>
+                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Explore</strong></button>
                     <div class="dropdown-content">
                         <a href="requests.html"><strong>Request Form</strong></a>
                         <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
