@@ -129,7 +129,7 @@
             #open-sidebar-button {
                 display: block;
             }
-            #navbar {
+            .sidebar {
                 display: none;
                 position: fixed;
                 top: 0;
@@ -142,20 +142,20 @@
                 z-index: 1000;
                 overflow-y: auto;
             }
-            #navbar ul {
+            .sidebar ul {
                 list-style-type: none;
                 padding: 0;
             }
-            #navbar ul li {
+            .sidebar ul li {
                 padding: 8px 16px;
                 text-align: left;
             }
-            #navbar ul li a {
+            .sidebar ul li a {
                 color: #fff;
                 text-decoration: none;
                 display: block;
             }
-            #navbar ul li a:hover {
+            .sidebar ul li a:hover {
                 background: #575757;
             }
             #close-sidebar-button {
@@ -183,7 +183,7 @@
             }
         }
         @media (min-width: 769px) {
-            #navbar {
+            .sidebar {
                 display: none;
             }
             #open-sidebar-button {
@@ -193,13 +193,13 @@
     </style>
     <script>
         function openSidebar() {
-            document.getElementById('navbar').style.display = 'block';
+            document.getElementById('sidebar').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'true');
         }
 
         function closeSidebar() {
-            document.getElementById('navbar').style.display = 'none';
+            document.getElementById('sidebar').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'false');
         }
@@ -212,10 +212,10 @@
 </head>
 <body class="theme-1">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="sidebar">
         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
     </button>
-    <nav id="navbar">
+    <nav class="sidebar" id="sidebar">
         <ul>
             <li>
                 <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
