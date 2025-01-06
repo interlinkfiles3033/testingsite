@@ -198,22 +198,38 @@
         }
     </style>
     <script>
-        function openSidebar() {
-            document.getElementById('sidebar').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'true');
+        async function loadBanner() {
+            try {
+                const response = await fetch('https://interlinkcvhs.org/banner.html');
+                const bannerContent = await response.text();
+                document.getElementById('banner-container').innerHTML = bannerContent;
+            } catch (error) {
+                console.error('Error loading banner:', error);
+                document.getElementById('banner-container').innerHTML = 
+                    '<p>Error loading banner. Please try again later.</p>';
+            }
         }
 
-        function closeSidebar() {
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'false');
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBanner();
+            loadNav();
+            fetchAssignments();
+        });
+
+        const themes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5'];
+        let currentThemeIndex = 0;
+
+        function cycleTheme() {
+            document.body.classList.remove(themes[currentThemeIndex]);
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            document.body.classList.add(themes[currentThemeIndex]);
+            localStorage.setItem('theme', themes[currentThemeIndex]);
         }
 
-        function toggleDropdown(event) {
-            const dropdownContent = event.currentTarget.nextElementSibling;
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        }
+        // Apply the saved theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'theme-1';
+        document.body.classList.add(savedTheme);
+        currentThemeIndex = themes.indexOf(savedTheme);
     </script>
 </head>
 <body class="theme-1">
@@ -532,7 +548,7 @@
         }
 
         // Apply the saved theme on page load
-        const savedTheme = localStorage.getItem('theme') || 'theme-1';
+        let savedTheme = localStorage.getItem('theme') || 'theme-1';
         document.body.classList.add(savedTheme);
         currentThemeIndex = themes.indexOf(savedTheme);
     </script>
