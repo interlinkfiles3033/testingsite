@@ -47,10 +47,7 @@
         .nav {
             display: flex;
             align-items: center;
-            padding: 1rem;
-            background: var(--header-background);
-            backdrop-filter: blur(10px);
-            transition: background-color var(--transition-speed);
+            flex-grow: 1;
         }
         .nav-links {
             display: flex;
@@ -185,6 +182,17 @@
                 z-index: 1001;
             }
         }
+        @media (min-width: 769px) {
+            #navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            #open-sidebar-button {
+                display: none;
+            }
+        }
     </style>
     <script>
         function openSidebar() {
@@ -213,9 +221,19 @@
                 </button>
             </li>
             <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn"><strong>Subject Study</strong></button>
+                    <div class="dropdown-content">
+                        <a href="#"><strong>English</strong></a>
+                        <a href="#"><strong>Science</strong></a>
+                        <a href="#"><strong>Math</strong></a>
+                        <a href="#"><strong>History</strong></a>
+                        <a href="#"><strong>Fine Arts</strong></a>
+                        <a href="#"><strong>Other</strong></a>
+                    </div>
+                </div>
+            </li>
             <li>
                 <div class="dropdown">
                     <button class="dropbtn"><strong>Explore</strong></button>
