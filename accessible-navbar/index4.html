@@ -97,7 +97,7 @@
             text-decoration: none;
             display: block;
             font-weight: normal;
-            transition: color var(--transition-speed);
+            transition: color var (--transition-speed);
         }
         .dropdown-content a:hover {
             background: var(--dropdown-hover-color);
@@ -207,6 +207,18 @@
                 console.error('Error loading banner:', error);
                 document.getElementById('banner-container').innerHTML = 
                     '<p>Error loading banner. Please try again later.</p>';
+            }
+        }
+
+        async function loadNav() {
+            try {
+                const response = await fetch('navnav4.html');
+                const nav = await response.text();
+                document.getElementById('nav-container').innerHTML = nav;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+                document.getElementById('nav-container').innerHTML = 
+                    '<p>Error loading navigation. Please try again later.</p>';
             }
         }
 
