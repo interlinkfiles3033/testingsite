@@ -64,7 +64,7 @@
         .assignments-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
+            gap: 1em; /* Adjusted gap for equal spacing */
             justify-content: center;
         }
         .assignment-card {
@@ -76,7 +76,7 @@
             cursor: pointer;
             transition: all var(--transition-speed) ease;
             height: 150px; /* Fixed height to maintain size */
-            margin: 1em; /* Adjusted margin for equal vertical and horizontal spacing */
+            margin: 0; /* Removed margin to use gap for spacing */
         }
         .assignment-details, .assignment-description {
             color: var(--text-color);
