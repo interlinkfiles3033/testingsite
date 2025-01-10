@@ -95,16 +95,79 @@
         }
         @media screen and (max-width: 768px) {
             .glass-header {
-                /* Responsive styles */
+                display: none;
             }
-            .logo-container {
-                /* Responsive styles */
+            .nav {
+                display: none;
             }
-            .period-table th, .period-table td {
-                /* Responsive styles */
+            #open-sidebar-button {
+                display: block;
             }
-            .assignment-card {
-                /* Responsive styles */
+            .sidebar {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100%;
+                background: #333;
+                padding-top: 60px;
+                transition: 0.3s;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            .sidebar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .sidebar ul li {
+                padding: 8px 16px;
+                text-align: left;
+            }
+            .sidebar ul li a,
+            .sidebar ul li .dropbtn {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                font-weight: normal;
+                padding: 0.5rem 1rem;
+                margin: 0 0.25rem;
+                transition: color var(--transition-speed);
+            }
+            .sidebar ul li a:hover,
+            .sidebar ul li .dropbtn:hover {
+                background: #575757;
+            }
+            #close-sidebar-button {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 36px;
+            }
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            #open-sidebar-button {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+            }
+        }
+        @media (min-width: 769px) {
+            .sidebar {
+                display: none;
+            }
+            #open-sidebar-button {
+                display: none;
             }
         }
         .theme-toggle {
@@ -138,6 +201,56 @@
         </div>
         <div id="nav-container"></div>
     </header>
+    <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+    </button>
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+                </button>
+            </li>
+            <li class="home-li"><a class="active-link nav-link" aria-current="page" href="index.html"><strong>Home</strong></a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Subject Study</strong></button>
+                    <div class="dropdown-content">
+                        <a href="#"><strong>English</strong></a>
+                        <a href="#"><strong>Science</strong></a>
+                        <a href="#"><strong>Math</strong></a>
+                        <a href="#"><strong>History</strong></a>
+                        <a href="#"><strong>Fine Arts</strong></a>
+                        <a href="#"><strong>Other</strong></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown(event)"><strong>Explore</strong></button>
+                    <div class="dropdown-content">
+                        <a href="requests.html"><strong>Request Form</strong></a>
+                        <a href="https://interlinkai.streamlit.app/"><strong>Interlink AI</strong></a>
+                        <a href="tutoring.html"><strong>Peer Tutoring</strong></a>
+                        <a href="extra/deepdives.html"><strong>Podcasts</strong></a>
+                        <a href="qotd.html"><strong>QOTD</strong></a>
+                        <a href="qbank.html"><strong>QBank</strong></a>
+                        <a href="quizlets.html"><strong>Quizlets</strong></a>
+                        <a href="extra/productivity.html"><strong>Productivity Tools</strong></a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="credits.html" class="nav-link"><strong>Credits</strong></a></li>
+            <li>
+                <button class="theme-toggle" onclick="cycleTheme()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="var(--text-color)">
+                        <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"/>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
     <main class="fade-in">
         <center>
             <h4>We DO NOT support academic dishonesty of any sort.</h4>
@@ -389,10 +502,42 @@
         }
 
         // Apply the saved theme on page load
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
+        const initialTheme = localStorage.getItem('theme') || 'light';
+        if (initialTheme === 'dark') {
             document.body.classList.add('dark-mode');
         }
+
+        function openSidebar() {
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'true');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('open-sidebar-button').setAttribute('aria-expanded', 'false');
+        }
+
+        function toggleDropdown(event) {
+            const dropdownContent = event.currentTarget.nextElementSibling;
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        const themes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5'];
+        let currentThemeIndex = 0;
+
+        function cycleTheme() {
+            document.body.classList.remove(themes[currentThemeIndex]);
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            document.body.classList.add(themes[currentThemeIndex]);
+            localStorage.setItem('theme', themes[currentThemeIndex]);
+        }
+
+        // Apply the saved theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'theme-1';
+        document.body.classList.add(savedTheme);
+        currentThemeIndex = themes.indexOf(savedTheme);
     </script>
 </body>
 </html>
