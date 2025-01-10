@@ -110,7 +110,7 @@
                 left: 0;
                 width: 250px;
                 height: 100%;
-                background: #333;
+                background: var(--background-color);
                 padding-top: 60px;
                 transition: 0.3s;
                 z-index: 1000;
@@ -126,13 +126,16 @@
             }
             .sidebar ul li a,
             .sidebar ul li .dropbtn {
-                color: #fff;
+                color: var(--text-color);
                 text-decoration: none;
                 display: block;
                 font-weight: normal;
                 padding: 0.5rem 1rem;
                 margin: 0 0.25rem;
                 transition: color var(--transition-speed);
+                background: none; /* Make button background invisible */
+                border: none; /* Remove border */
+                cursor: pointer; /* Add pointer cursor */
             }
             .sidebar ul li a:hover,
             .sidebar ul li .dropbtn:hover {
@@ -143,6 +146,10 @@
                 top: 20px;
                 left: 20px;
                 font-size: 36px;
+                color: var(--text-color); /* Ensure the close button is visible */
+                background: none; /* Make button background invisible */
+                border: none; /* Remove border */
+                cursor: pointer; /* Add pointer cursor */
             }
             #overlay {
                 display: none;
@@ -524,20 +531,23 @@
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         }
 
-        const themes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5'];
-        let currentThemeIndex = 0;
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode';
+            const newTheme = currentTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
+            body.classList.remove(currentTheme);
+            body.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
 
-        function cycleTheme() {
-            document.body.classList.remove(themes[currentThemeIndex]);
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            document.body.classList.add(themes[currentThemeIndex]);
-            localStorage.setItem('theme', themes[currentThemeIndex]);
+            // Update sidebar text color
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
         }
 
         // Apply the saved theme on page load
-        const savedTheme = localStorage.getItem('theme') || 'theme-1';
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
         document.body.classList.add(savedTheme);
-        currentThemeIndex = themes.indexOf(savedTheme);
+        document.getElementById('sidebar').style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
     </script>
 </body>
 </html>
