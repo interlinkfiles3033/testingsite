@@ -63,7 +63,7 @@
         }
         .assignments-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduced min-width */
             gap: 1em; /* Adjusted gap for equal spacing */
             justify-content: center;
         }
@@ -75,7 +75,7 @@
             text-align: center;
             cursor: pointer;
             transition: all var(--transition-speed) ease;
-            height: 100px; /* Reduced height */
+            height: 120px; /* Increased height */
             margin: 0.5em 0; /* Adjusted vertical margin */
         }
         .assignment-details, .assignment-description {
